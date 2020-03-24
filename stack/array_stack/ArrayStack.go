@@ -1,4 +1,4 @@
-package arrayStack
+package array_stack
 
 import (
 	"fmt"
@@ -17,9 +17,13 @@ type Stack struct {
 	stack []interface{}
 }
 
-func (stack *Stack) Init(limit int) {
-	stack.limit = limit
-	stack.mutex = new(sync.RWMutex)
+//	初始化
+func newArrayStack(limit int) *Stack {
+	return &Stack{
+		mutex: new(sync.RWMutex),
+		limit: limit,
+		stack: nil,
+	}
 }
 
 //	入栈
@@ -51,6 +55,7 @@ func (stack *Stack) Pop() interface{} {
 	return item
 }
 
+//	判断是否为空
 func (stack *Stack) IsEmpty() bool {
 	stack.mutex.RLock()
 	defer stack.mutex.RUnlock()

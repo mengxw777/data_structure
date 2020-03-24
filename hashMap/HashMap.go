@@ -24,15 +24,13 @@ type hashData struct {
 	value interface{}
 }
 
-func New() *hashMap {
+func NewHashMap() *hashMap {
 	hashMap := &hashMap{
 		mutex: new(sync.RWMutex),
 	}
 
 	for i := 0; i < bucketCount; i++ {
-		list := singleList.List{}
-		list.Init()
-		hashMap.Element[i] = &list
+		hashMap.Element[i] = singleList.NewSingleList()
 	}
 
 	return hashMap

@@ -7,7 +7,7 @@ type Tree struct {
 	left, right *Tree
 }
 
-func New() *Tree {
+func NewBinaryTree() *Tree {
 	return &Tree{}
 }
 
@@ -24,7 +24,7 @@ func (tree *Tree) SetRight(node *Tree) {
 }
 
 //	前序遍历 ->	首先访问根，再先序遍历左（右）子树，最后先序遍历右（左）子树
-func PreorderTraversal(tree *Tree) {
+func PreloaderTraversal(tree *Tree) {
 	if tree.Value == nil {
 		return
 	}
@@ -32,11 +32,11 @@ func PreorderTraversal(tree *Tree) {
 	fmt.Printf("当前节点是: %v \n", tree.Value)
 
 	if tree.left != nil {
-		PreorderTraversal(tree.left)
+		PreloaderTraversal(tree.left)
 	}
 
 	if tree.right != nil {
-		PreorderTraversal(tree.right)
+		PreloaderTraversal(tree.right)
 	}
 }
 

@@ -1,4 +1,4 @@
-package listStack
+package linked_stack
 
 import (
 	singleList "data_structure/linked_list/single_list"
@@ -15,15 +15,15 @@ type StackInterface interface {
 type Stack struct {
 	mutex *sync.RWMutex
 	limit uint
-	stack singleList.List
+	stack *singleList.List
 }
 
-func (stack *Stack) Init(limit uint) {
-	list := singleList.List{}
-	list.Init()
-	stack.limit = limit
-	stack.mutex = new(sync.RWMutex)
-	stack.stack = list
+func NewLinkedStack(limit uint) *Stack {
+	return &Stack{
+		mutex: new(sync.RWMutex),
+		limit: limit,
+		stack: singleList.NewSingleList(),
+	}
 }
 
 //	入栈

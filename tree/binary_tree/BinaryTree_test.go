@@ -1,46 +1,50 @@
-package main
+package binary_tree
 
 import (
-	"data_structure/tree/binary_tree"
 	"fmt"
+	"testing"
 )
 
-func main() {
+func addData() {
 	//	第一层
-	A := binary_tree.New()
+	A := NewBinaryTree()
 	A.SetValue("A")
 
 	//	第二层
-	B := binary_tree.New()
+	B := NewBinaryTree()
 	B.SetValue("B")
 	A.SetLeft(B)
 
-	C := binary_tree.New()
+	C := NewBinaryTree()
 	C.SetValue("C")
 	A.SetRight(C)
 
 	//	第三层子树
-	D := binary_tree.New()
+	D := NewBinaryTree()
 	D.SetValue("D")
 	B.SetLeft(D)
 
-	F := binary_tree.New()
+	F := NewBinaryTree()
 	F.SetValue("F")
 	B.SetRight(F)
 
 	//	第四层
-	E := binary_tree.New()
+	E := NewBinaryTree()
 	E.SetValue("E")
 	D.SetLeft(E)
 
-	G := binary_tree.New()
+	G := NewBinaryTree()
 	G.SetValue("G")
 	F.SetLeft(G)
 
 	fmt.Print("前序 : \n")
-	binary_tree.PreorderTraversal(A)
+	PreloaderTraversal(A)
 	fmt.Print("中序 : \n")
-	binary_tree.InOrderTraversal(A)
+	InOrderTraversal(A)
 	fmt.Print("后序 : \n")
-	binary_tree.PostorderTraversal(A)
+	PostorderTraversal(A)
+}
+
+func TestAdd(t *testing.T) {
+	addData()
 }

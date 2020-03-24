@@ -21,7 +21,7 @@ type Set struct {
 	Elements map[interface{}]bool
 }
 
-func New() *Set {
+func NewSet() *Set {
 	return &Set{
 		mutex:    new(sync.RWMutex),
 		Elements: make(map[interface{}]bool),
@@ -79,7 +79,7 @@ func (set *Set) Intersect(other *Set) *Set {
 	set.mutex.Lock()
 	defer set.mutex.Unlock()
 
-	newSet := New()
+	newSet := NewSet()
 
 	for element := range set.Elements {
 		if other.Contains(element) == true {
@@ -95,7 +95,7 @@ func (set *Set) Diff(other *Set) *Set {
 	set.mutex.Lock()
 	defer set.mutex.Unlock()
 
-	newSet := New()
+	newSet := NewSet()
 
 	for setElement := range set.Elements {
 		if other.Contains(setElement) == false {
@@ -111,7 +111,7 @@ func (set *Set) Union(other *Set) *Set {
 	set.mutex.Lock()
 	defer set.mutex.Unlock()
 
-	newSet := New()
+	newSet := NewSet()
 
 	for setElement := range set.Elements {
 		newSet.Add(setElement)

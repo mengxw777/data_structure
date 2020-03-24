@@ -18,11 +18,13 @@ type List struct {
 }
 
 //	初始化
-func (list *List) Init() {
-	list.Size = 0
-	list.Head = nil
-	list.Tail = nil
-	list.mutex = new(sync.RWMutex)
+func NewSingleList() *List {
+	return &List{
+		mutex: new(sync.RWMutex),
+		Head:  nil,
+		Tail:  nil,
+		Size:  0,
+	}
 }
 
 //	插入至尾部
